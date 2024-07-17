@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_17_114442) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_17_121344) do
   create_table "departaments", force: :cascade do |t|
     t.string "name"
     t.integer "user_id", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_114442) do
     t.datetime "updated_at", null: false
     t.integer "manager_id"
     t.string "username"
+    t.integer "job_grade"
   end
 
   add_foreign_key "departaments", "users"

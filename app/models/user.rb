@@ -1,7 +1,12 @@
 class User < ApplicationRecord
 
+
   before_save :set_name, :set_username, :set_email
   has_many :departaments
+
+  validates :job_grade, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 11 }
+
+  JOB_GRADE = 1..11
 
 
   private
