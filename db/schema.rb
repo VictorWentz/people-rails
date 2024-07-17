@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_16_183607) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_17_114442) do
+  create_table "departaments", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_departaments_on_user_id"
+  end
+
   create_table "feedbacks", force: :cascade do |t|
     t.integer "nota_p1"
     t.datetime "created_at", null: false
@@ -24,6 +32,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_16_183607) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "manager_id"
+    t.string "username"
   end
 
+  add_foreign_key "departaments", "users"
 end
