@@ -1,0 +1,19 @@
+<%= form_with(model: object) do |f|  %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, autofocus:true %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label "Manager" %>
+  <%= f.collection_select :manager_id, @managers, :id, :name, prompt: "Selecione um gerente" %>
+
+  <%= f.label :job_grade %>
+  <%= f.select :job_grade, User::JOB_GRADE.to_a, prompt: "Selecione um Grade!" %>
+
+  <%= f.label "Departamentos" %>
+  <%= f.collection_check_boxes :departament_ids, Departament.all, :id, :name %>
+
+  <%=f.submit %>
+
+<% end %>

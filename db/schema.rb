@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_17_121344) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_17_163432) do
   create_table "departaments", force: :cascade do |t|
     t.string "name"
     t.integer "user_id", null: false
@@ -23,6 +23,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_121344) do
     t.integer "nota_p1"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_departaments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "departament_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["departament_id"], name: "index_user_departaments_on_departament_id"
+    t.index ["user_id"], name: "index_user_departaments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,4 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_121344) do
   end
 
   add_foreign_key "departaments", "users"
+  add_foreign_key "user_departaments", "departaments"
+  add_foreign_key "user_departaments", "users"
 end
