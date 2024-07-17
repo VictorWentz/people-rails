@@ -1,5 +1,7 @@
 class DepartamentsController < ApplicationController
 
+  before_action :set_manager_list
+
   def index
     fail
   end
@@ -10,6 +12,7 @@ class DepartamentsController < ApplicationController
 
   def create
     @departament = Departament.new(set_departament_params)
+
     if @departament.save
       redirect_to "/"
     else
@@ -19,7 +22,7 @@ class DepartamentsController < ApplicationController
 
   private
   def set_departament_params
-    params.require(:departament).permit(:name)
+    params.require(:departament).permit(:name, :user_id)
   end
 
 end

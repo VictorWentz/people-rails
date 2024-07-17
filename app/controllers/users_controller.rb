@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   before_action :set_manager_list
 
-
   def index
     @users = User.all
   end
@@ -33,10 +32,6 @@ class UsersController < ApplicationController
   private
   def set_user_params
     params.require(:user).permit(:first_name, :last_name, :manager_id, :job_grade)
-  end
-
-  def set_manager_list
-    @managers = User.where('job_grade <= ?', 5)
   end
 
 

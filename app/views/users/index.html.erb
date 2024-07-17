@@ -4,3 +4,23 @@
   <%=link_to "Criar usuario", new_user_path %>
   <%=link_to "Criar Departamento", new_departament_path %>
 </section>
+<section>
+  <h1>
+    Quantidade de Departamentos:
+  </h1>
+  <% @managers.each do |user| %>
+    <span>
+      <%= user.name %> : <%=user.departaments.size %>, <%=user.departaments.pluck(:name) %>
+    </span>
+    <br>
+  <% end %>
+</section>
+<section>
+  <h1>
+    Lista Funcionarios
+  </h1>
+  <% @users.each do |user| %>
+    <%=link_to user.name, user %>
+    <br>
+  <% end %>
+</section>
