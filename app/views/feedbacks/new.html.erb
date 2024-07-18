@@ -1,0 +1,19 @@
+
+
+
+<%=form_with(model: @feedback) do |f| %>
+  <% @feedbackColumns.each do |column| %>
+    <%= f.label @questions.next %>
+    <% (0..10).each do |opcao| %>
+      <div>
+        <%= f.radio_button column, opcao %>
+        <%= f.label column, opcao %>
+      </div>
+    <% end %>
+    <br>
+  <% end %>
+  <%=f.label "Comentarios Finais" %><br>
+  <%=f.text_field :comments %>
+  <br>
+  <%=f.submit "Enviar feedback" %>
+<% end %>

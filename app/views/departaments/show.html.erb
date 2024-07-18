@@ -1,0 +1,39 @@
+<section>
+  <h1>
+    Departamento: <%=@departament.name %>
+  </h1>
+  <div class = 'departament-details'>
+    <p>
+      Gestor: <%=link_to @departament.user.name.capitalize, @departament.user %>
+    </p>
+    <div>
+      <%=link_to "Editar Departamento", edit_departament_path %>
+    </div>
+    <h4>
+      Funcionarios do departamento
+    </h4>
+    <table>
+      <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Função</th>
+        <th>Grade</th>
+        <th>Email</th>
+        <th>Data de Contratação</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @departament.users.each do |user| %>
+        <tr>
+          <td><%=link_to user.name, user %></td>
+          <td>Placeholder</td>
+          <td><%= user.job_grade %></td>
+          <td><%= user.email %></td>
+          <td><%= user.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</section>

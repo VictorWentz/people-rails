@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_17_163432) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_18_200144) do
   create_table "departaments", force: :cascade do |t|
     t.string "name"
     t.integer "user_id", null: false
@@ -20,9 +20,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_163432) do
   end
 
   create_table "feedbacks", force: :cascade do |t|
-    t.integer "nota_p1"
+    t.integer "nota_1"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "nota_2"
+    t.integer "nota_3"
+    t.integer "nota_4"
+    t.integer "nota_5"
+    t.integer "nota_6"
+    t.integer "nota_7"
+    t.integer "nota_8"
+    t.text "comments"
+    t.integer "user_id"
+    t.integer "manager_id"
   end
 
   create_table "user_departaments", force: :cascade do |t|

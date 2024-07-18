@@ -1,0 +1,5 @@
+<section>
+  <% @usersFeedback.each do |user| %>
+    <%=link_to "#{user.name}^#{user.id}", new_feedback_path(user_id: user.id) %>
+  <% end %>
+</section>

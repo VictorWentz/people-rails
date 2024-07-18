@@ -1,0 +1,9 @@
+<section>
+  <h1>
+    Lista de Departamentos
+  </h1>
+  <%@departament.each do |dep| %>
+    <%=link_to dep.name, dep %>
+    <br>
+  <% end %>
+</section>

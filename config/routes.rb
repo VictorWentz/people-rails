@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   resources :departaments
-  resources :feedbacks
   resources :users
+  resources :feedbacks
 
   get "/" => "users#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
