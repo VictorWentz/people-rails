@@ -25,7 +25,10 @@ class FeedbacksController < ApplicationController
     else
       render 'new', status: :unprocessable_entity
     end
+  end
 
+  def user_feedback_list
+    @feedbacks = Feedback.where(user_id: params[:id])
 
   end
 

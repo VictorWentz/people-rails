@@ -1,5 +1,24 @@
 <section>
-  <% @usersFeedback.each do |user| %>
-    <%=link_to "#{user.name}^#{user.id}", new_feedback_path(user_id: user.id) %>
-  <% end %>
+  <table>
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Função</th>
+      <th>Departamento</th>
+      <th>Ultimos feedbacks</th>
+      <th>Novo Feedback</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @usersFeedback.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td>"Placeholder"</td>
+        <td><%= user.departaments.first.name%></td>
+        <td><%=button_to "feedbacks lista", user_feedback_list_path(id: user.id), method: :get  %></td>
+        <td><%=link_to "novo feedback", new_feedback_path(user_id: user.id) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </section>
