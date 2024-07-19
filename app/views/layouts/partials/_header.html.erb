@@ -1,4 +1,4 @@
-<heade>
+<header>
   <h1> Employees Feedback</h1>
   <nav>
     <ul>
@@ -8,6 +8,22 @@
       <li>
         <%= link_to "Departamentos", departaments_url %>
       </li>
+      <li>
+        <% if current_user && current_user.email.eql?("victor_wentz@vitu.com") %>
+          <%= link_to "Feedbacks", feedbacks_url %>
+        <% end %>
+      </li>
+      <li>
+        <% if current_user %>
+          <%= current_user.name%>
+        <%else %>
+
+        <% end %>
+      </li>
+      <li>
+        <%= button_to "Sign Out", session_path, method: :delete %>
+      </li>
     </ul>
+
   </nav>
-</heade>
+</header>

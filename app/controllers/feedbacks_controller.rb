@@ -2,9 +2,10 @@ class FeedbacksController < ApplicationController
 
   before_action :set_feedback_columns, only: [:new, :create]
   before_action :set_question_array, only: [:new, :create]
+  before_action :set_user_to_feedback, only: [:new]
 
   def index
-    @usersFeedback = User.where('manager_id == ?', 2)
+    @usersFeedback = User.where('manager_id == ?', current_user.id)
   end
 
   def show
@@ -12,16 +13,15 @@ class FeedbacksController < ApplicationController
   end
 
   def new
-    @userforfeedback = User.find(params[:user_id])
     @feedback = Feedback.new
+
   end
 
   def create
     @feedback = Feedback.new(set_feedback_params)
-    @feedback.user_id = 6
-    @feedback.manager_id = 2
+    @feedback.manager_id = current_user.id
     if @feedback.save
-      redirect_to feedbacks_path
+      redirect_to feedbacks_url, notice: 'Feedback was successfully created.'
     else
       render 'new', status: :unprocessable_entity
     end
@@ -52,5 +52,9 @@ class FeedbacksController < ApplicationController
 
   def set_question_array
     @questions = Feedback::QUESTIONS.each
+  end
+
+  def set_user_to_feedback
+    @user = User.find(params[:user_id])
   end
 end

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   before_save :set_name, :set_username, :set_email
   has_many :user_departaments
   has_many :departaments, through: :user_departaments
+  has_many :feedbacks
 
   validates :job_grade, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 11 }
 
