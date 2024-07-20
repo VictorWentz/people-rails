@@ -1,1 +1,38 @@
-<h1> Teste Route</h1>
+<h1> Lista de feedbacks de <%=@user.name %></h1>
+
+<% if not @user.feedbacks.empty? %>
+  <table>
+    <thead>
+    <tr>
+      <th>Data feedback</th>
+      <th>p1</th>
+      <th>p2</th>
+      <th>p3</th>
+      <th>p4</th>
+      <th>p5</th>
+      <th>p6</th>
+      <th>p7</th>
+      <th>p8</th>
+      <th>Comentarios</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @user.feedbacks.each do |feed| %>
+      <tr>
+        <td><%= feed.formatted_created_at %></td>
+        <td><%= feed.nota_1 %></td>
+        <td><%= feed.nota_2 %></td>
+        <td><%= feed.nota_3 %></td>
+        <td><%= feed.nota_4 %></td>
+        <td><%= feed.nota_5 %></td>
+        <td><%= feed.nota_6 %></td>
+        <td><%= feed.nota_7 %></td>
+        <td><%= feed.nota_8 %></td>
+        <td><%= feed.comments %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%else %>
+  sem feed
+<%end %>

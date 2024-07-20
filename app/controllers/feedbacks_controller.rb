@@ -2,7 +2,7 @@ class FeedbacksController < ApplicationController
 
   before_action :set_feedback_columns, only: [:new, :create]
   before_action :set_question_array, only: [:new, :create]
-  before_action :set_user_to_feedback, only: [:new]
+  before_action :set_user_to_feedback, only: [:new, :user_feedback_list]
 
   def index
     @usersFeedback = User.where('manager_id == ?', current_user.id)
@@ -28,7 +28,9 @@ class FeedbacksController < ApplicationController
   end
 
   def user_feedback_list
-    @feedbacks = Feedback.where(user_id: params[:id])
+    @feedbacks = Feedback.where(user_id: params[:user_id])
+
+
 
   end
 
