@@ -1,29 +1,58 @@
-<header>
-  <h1> Employees Feedback</h1>
-  <nav>
-    <ul>
-      <li>
-        <%= link_to "Funcionarios", users_url %>
-      </li>
-      <li>
-        <%= link_to "Departamentos", departaments_url %>
-      </li>
-      <li>
-        <% if current_user && current_user.email.eql?("victor_wentz@vitu.com") %>
-          <%= link_to "Feedbacks", feedbacks_url %>
-        <% end %>
-      </li>
-      <li>
+
+
+<nav id="sidebar">
+  <div id="sidebar_content">
+    <div class="user">
+      <%=image_tag "man.jpg", id:"user_avatar", alt:"Avatar" %>
+      <p id='user_infos'>
         <% if current_user %>
-          <%= current_user.name%>
-        <%else %>
-
+          <span class="item-description">
+            <%=current_user.name %>
+          </span>
+          <span class="item-description">
+          <%=current_user.job_grade %>
+          </span>
         <% end %>
-      </li>
-      <li>
-        <%= button_to "Sign Out", session_path, method: :delete %>
-      </li>
-    </ul>
+      </p>
+    </div>
 
-  </nav>
-</header>
+    <ul id="side_items">
+      <li class="side-item">
+        <a>
+          <i class="fa-regular fa-paste"></i>
+          <span class="item-description">
+          <%=link_to "Feedbacks", feedbacks_url   %>
+        </span>
+        </a>
+      </li>
+      <% if current_user && current_user.email.eql?("victor_wentz@vitu.com") %>
+        <li class="side-item">
+          <a>
+            <i class="fa-solid fa-user"></i>
+            <span class="item-description">
+          <%= link_to "Funcionarios", users_url %>
+          </span>
+          </a>
+        </li>
+        <li class="side-item">
+          <a>
+            <i class="fa-solid fa-house"></i>
+            <span class="item-description">
+          <%= link_to "Departamentos", departaments_url %>
+          </span>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+    <button id="open_btn">
+      <i id='open_btn_icon' class = 'fa-solid fa-chevron-right'></i>
+    </button>
+    <div id="logout">
+      <%= button_to session_path, method: :delete, class: "logout-btn" do %>
+        <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+      <% end %>
+    </div>
+
+
+  </div>
+</nav>

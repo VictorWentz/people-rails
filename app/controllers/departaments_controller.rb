@@ -1,5 +1,6 @@
 class DepartamentsController < ApplicationController
 
+  before_action :require_signin
   before_action :set_manager_list
   before_action :set_departament , only: [:show, :edit, :update, :destroy]
 

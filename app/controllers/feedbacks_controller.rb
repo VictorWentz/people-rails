@@ -1,8 +1,11 @@
 class FeedbacksController < ApplicationController
 
+  before_action :require_signin
+  before_action :is_your_user?, only: [:user_feedback_list]
   before_action :set_feedback_columns, only: [:new, :create]
   before_action :set_question_array, only: [:new, :create]
   before_action :set_user_to_feedback, only: [:new, :user_feedback_list]
+
 
   def index
     @usersFeedback = User.where('manager_id == ?', current_user.id)
@@ -61,5 +64,11 @@ class FeedbacksController < ApplicationController
 
   def set_user_to_feedback
     @user = User.find(params[:user_id])
+  end
+
+  def is_your_user?
+    unless User.where(manager_id: current_user.id).where(id: params[:user_id]).exists?
+      redirect_to feedbacks_url, notice: 'You are not allowed to view this page'
+    end
   end
 end

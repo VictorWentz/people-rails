@@ -13,3 +13,98 @@
  *= require_tree .
  *= require_self
  */
+
+
+* {
+    border: 1px solid;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 99vh;
+    display: flex;
+    background-color: lightblue;
+}
+
+main {
+    padding: 20px
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    height: 100vh;
+    border-radius: 0px 18px 18px 0px;
+}
+
+#sidebar_content {
+    padding: 12px;
+}
+
+#user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+#user_infos {
+    display: flex;
+    flex-direction: column;
+}
+
+#user_infos span:last-child {
+    color: #6b6b6b;
+    font-size: 12px;
+}
+
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 1px;
+}
+
+.main-login-page {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.image-login {
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+}
+
+.main-login {
+    display: flex;
+    background-color: #666666;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-login-content {
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.main-login-content h1 {
+    font-size: 3rem;
+}
+
+#user_avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    object-fit: cover;
+}
